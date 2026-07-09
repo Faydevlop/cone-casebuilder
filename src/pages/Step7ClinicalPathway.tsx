@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useCaseForm } from '../hooks/useCaseForm';
 import { StepNavigation } from '../components/ui/StepNavigation';
 import { saveDraftToLocalStorage } from '../utils/saveCase';
-import type { PathwayStep, CombinedAction } from '../types/caseForm.types';
+import type { PathwayStep } from '../types/caseForm.types';
 
 interface Step7Props {
   onPrev: () => void;
@@ -36,16 +36,6 @@ export function Step7ClinicalPathway({ onPrev, onNext }: Step7Props) {
     updatePathway(step7.pathwaySteps.filter((s) => s.id !== stepId));
   }
 
-  // Toggle critical action flag
-  function toggleCritical(stepId: string) {
-    const updated = step7.pathwaySteps.map((s) => {
-      if (s.id === stepId) {
-        return { ...s, isCritical: !s.isCritical };
-      }
-      return s;
-    });
-    updatePathway(updated);
-  }
 
   // Drag and Drop handlers
   function handleDragStart(e: React.DragEvent, actionId: string) {

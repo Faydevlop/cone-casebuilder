@@ -2,7 +2,11 @@
 
 import { useAuth } from '../../context/AuthContext';
 
-export function TopBar() {
+interface TopBarProps {
+  onMenuClick?: () => void;
+}
+
+export function TopBar({ onMenuClick }: TopBarProps) {
   const { userEmail, logout } = useAuth();
 
   // Derive display name from email
@@ -12,8 +16,19 @@ export function TopBar() {
 
   return (
     <header className="topbar">
-      {/* Left — empty */}
-      <div />
+      {/* Left — hamburger menu (mobile only) */}
+      <button
+        type="button"
+        className="hamburger-btn"
+        onClick={onMenuClick}
+        aria-label="Open navigation menu"
+      >
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </button>
 
       {/* Right — profile + logout */}
       <div className="topbar-right">

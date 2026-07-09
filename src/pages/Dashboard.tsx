@@ -47,7 +47,7 @@ function VitalBadges({ effect }: { effect: VitalEffect | string | undefined }) {
     painScore: 'Pain',
   };
   const active = (Object.keys(effect) as (keyof VitalEffect)[]).filter(
-    (k) => effect[k] !== undefined && effect[k] !== null && effect[k] !== ''
+    (k) => effect[k] !== undefined && effect[k] !== null
   );
   if (active.length === 0) {
     return <span style={{ fontSize: '11px', color: 'var(--color-muted)', fontStyle: 'italic' }}>None</span>;

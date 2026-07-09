@@ -28,7 +28,7 @@ function VitalBadges({ effect }: { effect: VitalEffect | string | undefined }) {
     painScore: 'Pain',
   };
   const active = (Object.keys(effect) as (keyof VitalEffect)[]).filter(
-    (k) => effect[k] !== undefined && effect[k] !== null && effect[k] !== ''
+    (k) => effect[k] !== undefined && effect[k] !== null
   );
   if (active.length === 0) {
     return <span style={{ fontSize: '11px', color: 'var(--color-muted)', fontStyle: 'italic' }}>None</span>;
@@ -141,7 +141,7 @@ export function CheckerPortal() {
         </button>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: selectedCase ? '320px 1fr' : '1fr', gap: '24px', alignItems: 'start' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
         
         {/* CASES DIRECTORY CARD */}
         <div className="card" style={{ padding: '20px' }}>
@@ -156,7 +156,11 @@ export function CheckerPortal() {
               No cases available in the central registry.
             </p>
           ) : (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+              gap: '12px'
+            }}>
               {cases.map((c) => (
                 <div
                   key={c.id}
@@ -196,7 +200,7 @@ export function CheckerPortal() {
 
         {/* DETAILED READ-ONLY REPORT VIEW */}
         {selectedCase && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', maxWidth: '900px', width: '100%', margin: '0 auto' }}>
             
             {/* Verification Status Header Card */}
             <div className="card" style={{ padding: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>

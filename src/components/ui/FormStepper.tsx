@@ -31,6 +31,7 @@ export function FormStepper({ currentStep, onStepClick }: FormStepperProps) {
           disabledColor: '#d1d5db',
           strokeWidth: 2,
           stepSize: '2.2em',
+          size: 1,
           style: 'solid',
         }}
         connectorStateColors

@@ -18,7 +18,6 @@ const ACTION_CATEGORY_OPTIONS: { value: ActionCategory | ''; label: string }[] =
   { value: 'Monitoring',         label: 'Monitoring' },
 ];
 
-const SHOW_RESULT_TEXT = new Set<ActionCategory>(['Imaging', 'Lab Test']);
 
 interface ActionCardProps {
   action: CombinedAction;
@@ -65,8 +64,7 @@ export function ActionCard({ action, index, onChange, onRemove }: ActionCardProp
       ? action.vitalEffectNotPerformed
       : { ...EMPTY_VITAL_EFFECT };
 
-  const isImaging = action.actionCategory === 'Imaging';
-  const showResultText = action.actionCategory !== '' && SHOW_RESULT_TEXT.has(action.actionCategory as ActionCategory);
+
 
   // Observation options management
   const observationPrompt = action.observation?.prompt || '';

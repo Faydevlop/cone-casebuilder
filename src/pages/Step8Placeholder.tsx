@@ -135,8 +135,7 @@ export function Step8Placeholder({ onPrev }: Step8Props) {
   }
 
   const totalActions   = step4.actions.length;
-  const imagingCount   = step4.actions.filter((a) => a.actionCategory === 'Imaging').length;
-  const labCount       = step4.actions.filter((a) => a.actionCategory === 'Lab Test').length;
+
   const evidenceCount  = formData.step6.evidenceFiles.length;
   const pathwayCount   = step7.pathwaySteps.length;
 

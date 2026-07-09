@@ -6,7 +6,7 @@ interface ToggleSwitchProps {
   disabled?: boolean;
 }
 
-export function ToggleSwitch({ id, checked, onChange, label, disabled = false }: ToggleSwitchProps) {
+export function ToggleSwitch({ id: _id, checked, onChange, label, disabled = false }: ToggleSwitchProps) {
   return (
     <div style={{
       display: 'flex',

@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, ReactNode } from 'react';
+import React, { createContext, useReducer, type ReactNode } from 'react';
 import type { CaseFormData, Step1Data, Step2Data, Step3Data, Step4Data, Step5Data, Step6Data, Step7Data, Step8Data } from '../types/caseForm.types';
 
 // ─── Initial State ─────────────────────────────────────────────────────────────
