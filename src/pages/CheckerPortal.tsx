@@ -174,9 +174,14 @@ export function CheckerPortal() {
                     transition: 'all 0.2s ease',
                   }}
                 >
-                  <div style={{ fontWeight: 600, color: 'var(--color-primary)', fontSize: 'var(--font-size-sm)', marginBottom: '4px' }}>
+                  <div style={{ fontWeight: 600, color: 'var(--color-primary)', fontSize: 'var(--font-size-sm)', marginBottom: '2px' }}>
                     {c.title}
                   </div>
+                  {c.fullData?.step1?.addedBy && (
+                    <div style={{ fontSize: '10px', color: 'var(--color-muted)', marginBottom: '4px' }}>
+                      Added by <strong>{c.fullData.step1.addedBy}</strong>
+                    </div>
+                  )}
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '8px' }}>
                     <span style={{ fontSize: '10px', textTransform: 'uppercase', color: 'var(--color-muted)' }}>
                       {c.speciality}
@@ -247,8 +252,15 @@ export function CheckerPortal() {
                   <h2 style={{ fontSize: '24px', fontWeight: 800, color: 'var(--color-primary)', margin: 0 }}>
                     {selectedCase.step1?.caseTitle || 'Untitled Scenario'}
                   </h2>
-                  <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-muted)', marginTop: '6px' }}>
-                    Speciality: <strong>{selectedCase.step1?.speciality || 'Not Set'}</strong>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', marginTop: '6px' }}>
+                    <span style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-muted)' }}>
+                      Speciality: <strong>{selectedCase.step1?.speciality || 'Not Set'}</strong>
+                    </span>
+                    {selectedCase.step1?.addedBy && (
+                      <span style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-muted)' }}>
+                        Added by: <strong style={{ color: 'var(--color-primary)' }}>{selectedCase.step1.addedBy}</strong>
+                      </span>
+                    )}
                   </div>
                 </div>
                 <div style={{ textAlign: 'right' }}>
@@ -277,6 +289,17 @@ export function CheckerPortal() {
                     <span style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-muted)', fontWeight: 600 }}>TIME LIMIT</span>
                     <div style={{ fontSize: 'var(--font-size-sm)', fontWeight: 600 }}>{formatDuration(selectedCase.step1?.criticalTimeLimit || 0)}</div>
                   </div>
+                  {selectedCase.step1?.addedBy && (
+                    <div>
+                      <span style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-muted)', fontWeight: 600 }}>ADDED BY</span>
+                      <div style={{ fontSize: 'var(--font-size-sm)', fontWeight: 600, color: 'var(--color-primary)', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                        <span style={{ width: 22, height: 22, borderRadius: '50%', background: 'var(--color-primary)', color: '#fff', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: '10px', fontWeight: 700, flexShrink: 0 }}>
+                          {selectedCase.step1.addedBy.slice(0, 2).toUpperCase()}
+                        </span>
+                        {selectedCase.step1.addedBy}
+                      </div>
+                    </div>
+                  )}
                   <div>
                     <span style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-muted)', fontWeight: 600 }}>SHOW COUNTDOWN TO LEARNER</span>
                     <div style={{ fontSize: 'var(--font-size-sm)', fontWeight: 600 }}>{selectedCase.step1?.showCountdown ? 'Yes' : 'No'}</div>
