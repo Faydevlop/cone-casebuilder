@@ -201,14 +201,14 @@ export function Dashboard({ onAddCase, onEditCase }: DashboardProps) {
       </div>
 
       {/* Main Cases Table / List */}
-      <div className="card" style={{ padding: '24px' }}>
-        <h3 className="card-title" style={{ marginBottom: '18px' }}>Simulation Scenarios</h3>
+      <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
+        <h3 className="card-title" style={{ padding: '20px 24px 16px', margin: 0, borderBottom: '1px solid var(--color-border)' }}>Simulation Scenarios</h3>
         {isLoading ? (
-          <div style={{ padding: '48px 0', textAlign: 'center' }}>
+          <div style={{ padding: '48px 24px', textAlign: 'center' }}>
             <p style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-muted)' }}>Loading cases...</p>
           </div>
         ) : cases.length === 0 ? (
-          <div className="placeholder-page" style={{ padding: '48px 0' }}>
+          <div className="placeholder-page" style={{ padding: '48px 24px' }}>
             <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" opacity={0.35} style={{ marginBottom: '12px' }}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18V6a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 6v1.5m-3.375 0H12m-3 0H5.25m3 0H8.25" />
             </svg>
@@ -225,6 +225,7 @@ export function Dashboard({ onAddCase, onEditCase }: DashboardProps) {
             </button>
           </div>
         ) : (
+          <div className="data-table-wrapper">
           <table className="data-table">
             <thead>
               <tr>
@@ -329,7 +330,9 @@ export function Dashboard({ onAddCase, onEditCase }: DashboardProps) {
               ))}
             </tbody>
           </table>
+          </div>
         )}
+
       </div>
 
       {/* ─── Case Report View Modal Overlay ─── */}
